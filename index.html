@@ -112,15 +112,14 @@
     .page-section.active-page { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* الهيدر الرئيسي مع خلفية قاع البحر والضوء الأزرق الشفاف */
     .hero-section {
-      background: linear-gradient(135deg, rgba(10, 37, 64, 0.78) 0%, rgba(14, 116, 144, 0.65) 50%, rgba(10, 25, 47, 0.82) 100%),
-                  url('https://images.unsplash.com/photo-1682687220063-4742bd7fd538?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+      background: linear-gradient(135deg, rgba(10, 25, 47, 0.78) 0%, rgba(14, 116, 144, 0.58) 50%, rgba(10, 25, 47, 0.82) 100%),
+                  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
       color: var(--white); padding: 55px 5% 45px; text-align: center; border-bottom: 2px solid var(--gold-18k);
     }
     
     .company-badge {
-      display: inline-block; background-color: rgba(243, 211, 122, 0.15); border: 1px solid var(--gold-18k); color: var(--gold-18k); padding: 8px 22px; border-radius: 20px; font-size: 14px; font-weight: 700; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease;
+      display: inline-block; background-color: rgba(10, 25, 47, 0.5); border: 1px solid var(--gold-18k); color: var(--gold-18k); padding: 8px 22px; border-radius: 20px; font-size: 14px; font-weight: 700; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(4px);
     }
     .company-badge:hover { background-color: var(--gold-18k); color: var(--navy-dark); transform: scale(1.03); }
 
@@ -131,15 +130,15 @@
       margin-bottom: 12px; 
       font-weight: 800; 
       line-height: 1.5;
-      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.85);
     }
 
     @media (max-width: 768px) {
       .hero-section h1 { font-size: 24px; }
     }
 
-    .hero-section h2 { font-size: 16px; color: #F1F5F9; font-weight: 600; margin-bottom: 20px; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
-    .hero-summary { font-size: 15px; max-width: 900px; margin: 0 auto; color: #E2E8F0; line-height: 1.9; text-shadow: 0 2px 6px rgba(0,0,0,0.7); }
+    .hero-section h2 { font-size: 16px; color: #F8FAFC; font-weight: 700; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+    .hero-summary { font-size: 15px; max-width: 900px; margin: 0 auto; color: #F1F5F9; line-height: 1.9; text-shadow: 0 2px 8px rgba(0,0,0,0.85); font-weight: 600; }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 40px 15px; }
     .section-title { text-align: center; font-size: 24px; color: var(--navy-dark); margin-bottom: 30px; position: relative; font-weight: 800; }
@@ -183,6 +182,13 @@
     .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 14px; font-family: inherit; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     
+    /* أنماط أزرار خيار طريقة الدفع المتجاورة */
+    .payment-toggle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
+    .btn-pay-toggle { background: #FFFFFF; border: 2px solid #CBD5E1; color: var(--navy-dark); padding: 12px; border-radius: 8px; font-weight: 800; font-size: 13px; cursor: pointer; text-align: center; transition: all 0.3s ease; }
+    .btn-pay-toggle:hover, .btn-pay-toggle.active-pay { background-color: var(--navy-dark); color: var(--gold-18k); border-color: var(--gold-18k); box-shadow: 0 4px 12px rgba(10, 25, 47, 0.15); }
+
+    .saudi-approved-banner { background: linear-gradient(135deg, var(--navy-dark), var(--navy-light)); color: var(--gold-18k); border: 1.5px solid var(--gold-18k); padding: 12px 18px; border-radius: 8px; font-weight: 800; font-size: 14px; text-align: center; margin-bottom: 20px; }
+
     .payment-box-info { background: #FFFBEB; border: 1px solid var(--gold-18k); padding: 12px; border-radius: 8px; margin: 10px 0; font-size: 13px; color: var(--navy-dark); }
     .total-price-banner { background: var(--navy-dark); color: var(--gold-18k); padding: 10px; border-radius: 6px; font-size: 16px; font-weight: 800; text-align: center; margin: 15px 0; }
 
@@ -401,7 +407,7 @@
     </section>
   </div>
 
-  <!-- PAGE 2.1: BOOK PURCHASE PAGE -->
+  <!-- PAGE 2.1: BOOK 1 PURCHASE PAGE (الدولية المباشرة) -->
   <div id="book-1-page" class="page-section">
     <section class="container">
       <button class="btn-back" onclick="switchPage('books-page', document.getElementById('btn-books'))">➔ العودة لقائمة الكتب</button>
@@ -431,66 +437,159 @@
         </div>
 
         <div class="order-form-container">
-          <h4 style="color: var(--navy-dark); margin-bottom: 15px; font-size: 17px;">اختيار عدد النسخ وبيانات الشحن وإتمام الدفع</h4>
-          <form id="bookOrderForm">
+          <!-- أيقونات خيار طريقة الدفع المباشرة متجاورة -->
+          <label style="font-weight: 800; font-size: 13.5px; color: var(--navy-dark); display: block; margin-bottom: 8px;">اختر نطاق وطريقة الدفع:</label>
+          <div class="payment-toggle-grid">
+            <button type="button" class="btn-pay-toggle active-pay">💳 الدفع الدولي المباشر</button>
+            <button type="button" class="btn-pay-toggle" onclick="switchToSaudiBookPage()">🇸🇦 الدفع الداخلي (السعودية)</button>
+          </div>
+
+          <h4 style="color: var(--navy-dark); margin-bottom: 15px; font-size: 16px;">بيانات الشحن وإتمام الطلب الدولي المباشر</h4>
+          <form id="bookOrderFormIntl">
             <div class="form-group">
-              <label for="bookTypeSelect">نوع النسخة المطلوبة:</label>
-              <select id="bookTypeSelect" onchange="updateBookPriceCalculations()" required>
+              <label for="b_type_intl">نوع النسخة المطلوبة:</label>
+              <select id="b_type_intl" onchange="updateIntlBookCalculations()" required>
                 <option value="printed">نسخة مطبوعة ورقية ($40 / للنسخة)</option>
                 <option value="digital">نسخة رقمية محمية للقراءة فقط ($20)</option>
               </select>
             </div>
             
-            <div class="form-group" id="qtyGroup">
-              <label for="bookQty">عدد النسخ المطبوعة:</label>
-              <input type="number" id="bookQty" value="1" min="1" max="500" oninput="updateBookPriceCalculations()">
+            <div class="form-group" id="qtyGroupIntl">
+              <label for="b_qty_intl">عدد النسخ المطبوعة:</label>
+              <input type="number" id="b_qty_intl" value="1" min="1" max="500" oninput="updateIntlBookCalculations()">
             </div>
 
             <div class="form-group">
-              <label for="b_name">الاسم بالكامل:</label>
-              <input type="text" id="b_name" required placeholder="اسمك كما هو في البطاقة">
+              <label for="b_name_intl">الاسم بالكامل:</label>
+              <input type="text" id="b_name_intl" required placeholder="اسمك كما هو في البطاقة">
             </div>
 
             <div class="form-group">
-              <label for="b_phone">رقم الواتساب / الهاتف:</label>
-              <input type="tel" id="b_phone" required placeholder="00966XXXXXXX">
+              <label for="b_phone_intl">رقم الواتساب / الهاتف:</label>
+              <input type="tel" id="b_phone_intl" required placeholder="00966XXXXXXX">
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label for="b_country">الدولة:</label>
-                <input type="text" id="b_country" required placeholder="مصر / السعودية">
+                <label for="b_country_intl">الدولة:</label>
+                <input type="text" id="b_country_intl" required placeholder="مصر / الإمارات / الكويت ...">
               </div>
               <div class="form-group">
-                <label for="b_city">المدينة / المحافظة:</label>
-                <input type="text" id="b_city" required placeholder="القاهرة / الرياض">
+                <label for="b_city_intl">المدينة / المحافظة:</label>
+                <input type="text" id="b_city_intl" required placeholder="القاهرة / دبي ...">
               </div>
             </div>
 
-            <div class="form-group" id="addressGroup">
-              <label for="b_address">عنوان الشحن التفصيلي:</label>
-              <input type="text" id="b_address" placeholder="الشارع، رقم المبنى">
+            <div class="form-group" id="addressGroupIntl">
+              <label for="b_address_intl">عنوان الشحن التفصيلي:</label>
+              <input type="text" id="b_address_intl" placeholder="الشارع، رقم المبنى">
+            </div>
+
+            <div class="payment-box-info">
+              <strong>💳 الدفع المباشر بالبطاقة:</strong> يتم الدفع الدولي عبر بايونير أو تحويل CIB المباشر بالدولار الأمريكي.
+            </div>
+
+            <div class="total-price-banner" id="bookPriceDisplayIntl">المبلغ الإجمالي المطلـوب: $40</div>
+            <button type="submit" class="btn-gold" id="bookSubmitBtnIntl">تأكيد طلب شراء النسخة الورقية المطبوعة والتواصل عبر الواتساب</button>
+            <button type="button" class="btn-gold" id="readBookDirectBtn" style="display:none; margin-top: 12px; background-color: var(--navy-dark); color: var(--gold-18k); border: 2px solid var(--gold-18k);" onclick="openProtectedReader()">📖 اقرأ الكتاب الآن</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE 2.2: DEDICATED SAUDI BOOK PAGE (صفحة الدفع الداخلي المستقلة بالسعودية) -->
+  <div id="book-1-sa-page" class="page-section">
+    <section class="container">
+      <button class="btn-back" onclick="switchPage('book-1-page', document.getElementById('btn-books'))">➔ العودة لخيارات الدفع الدولي</button>
+
+      <div class="saudi-approved-banner">
+        🇸🇦 الخدمة المعتمدة للشحن والتوزيع الداخلي داخل المملكة العربية السعودية
+      </div>
+
+      <div class="book-purchase-card">
+        <div class="book-info">
+          <div class="book-cover-wrapper">
+            <img src="https://github.com/SpaceM-6/maimouna-website/blob/main/book.jpg?raw=true" alt="غلاف الكتاب" class="book-cover-img" onclick="zoomBookImage(this.src)">
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">(انقر على الغلاف لتكبير الصورة)</p>
+          </div>
+          <h3>طلب: إحياء العقل السليم بكلام الخلاق العليم</h3>
+          <p style="color: var(--text-muted); margin-bottom: 15px;">دراسة علمية استقرائية مبتكرة في الاستشفاء القرآني المعرفي لتقوية الفهم والذاكرة والذكاء وعلاج حالات النسيان وأمراض الدماغ.</p>
+          <div class="value-box">
+            <h4>تنبيه خاص بالنسخة الرقمية (PDF):</h4>
+            <p style="font-size: 13px; color: #334155;">النسخة الرقمية مشفرة ومحمية بحقوق الطبع، وتفتح للقراءة فقط عبر الموقع داخل حساب الطالبة بعد الدفع المباشر، ولا يجوز إعادة نسخها أو إرسالها أو طباعتها.</p>
+          </div>
+
+          <div class="counters-grid">
+            <div class="counter-card">
+              <div style="font-size: 12px; color: #CBD5E1;">مشترين النسخة المطبوعة</div>
+              <div class="counter-number" id="printedCountDisplaySa">148</div>
+            </div>
+            <div class="counter-card">
+              <div style="font-size: 12px; color: #CBD5E1;">مشترين النسخة الرقمية</div>
+              <div class="counter-number" id="digitalCountDisplaySa">320</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-form-container">
+          <!-- أيقونات خيار طريقة الدفع المتجاورة -->
+          <label style="font-weight: 800; font-size: 13.5px; color: var(--navy-dark); display: block; margin-bottom: 8px;">اختر نطاق وطريقة الدفع:</label>
+          <div class="payment-toggle-grid">
+            <button type="button" class="btn-pay-toggle" onclick="switchPage('book-1-page', document.getElementById('btn-books'))">💳 الدفع الدولي المباشر</button>
+            <button type="button" class="btn-pay-toggle active-pay">🇸🇦 الدفع الداخلي (السعودية)</button>
+          </div>
+
+          <h4 style="color: var(--navy-dark); margin-bottom: 15px; font-size: 16px;">بيانات الشحن الداخلي وبنك الراجحي 🇸🇦</h4>
+          <form id="bookOrderFormSa">
+            <div class="form-group">
+              <label for="b_type_sa">نوع النسخة المطلوبة:</label>
+              <select id="b_type_sa" onchange="updateSaudiBookCalculations()" required>
+                <option value="printed">نسخة مطبوعة ورقية (150 ر.س / للنسخة)</option>
+                <option value="digital">نسخة رقمية محمية للقراءة فقط (75 ر.س)</option>
+              </select>
+            </div>
+            
+            <div class="form-group" id="qtyGroupSa">
+              <label for="b_qty_sa">عدد النسخ المطبوعة:</label>
+              <input type="number" id="b_qty_sa" value="1" min="1" max="500" oninput="updateSaudiBookCalculations()">
             </div>
 
             <div class="form-group">
-              <label for="bookPaymentMethod">طريقة الدفع الآمن:</label>
-              <select id="bookPaymentMethod" onchange="updateBookPriceCalculations()" required>
-                <option value="payoneer">الدفع الدولي المباشر بالبطاقة (بايونير / CIB)</option>
-                <option value="rajhi">الدفع الداخلي بالسعودية (بنك الراجحي)</option>
-              </select>
+              <label for="b_name_sa">الاسم بالكامل:</label>
+              <input type="text" id="b_name_sa" required placeholder="أدخل الاسم">
             </div>
 
-            <div id="rajhiBookDetails" class="payment-box-info" style="display: none;">
-              <strong>تفاصيل تحويل بنك الراجحي:</strong><br>
+            <div class="form-group">
+              <label for="b_phone_sa">رقم الجوال / الواتساب السعودي:</label>
+              <input type="tel" id="b_phone_sa" required placeholder="05XXXXXXXX">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="b_country_sa">الدولة:</label>
+                <input type="text" id="b_country_sa" value="المملكة العربية السعودية" readonly style="background: #E2E8F0;">
+              </div>
+              <div class="form-group">
+                <label for="b_city_sa">المدينة / المنطقة:</label>
+                <input type="text" id="b_city_sa" required placeholder="الرياض / جدة / الدمام ...">
+              </div>
+            </div>
+
+            <div class="form-group" id="addressGroupSa">
+              <label for="b_address_sa">عنوان الشحن التفصيلي داخل المملكة:</label>
+              <input type="text" id="b_address_sa" required placeholder="الشارع، اسم الحي، رقم المبنى">
+            </div>
+
+            <div class="payment-box-info">
+              <strong>🏛️ تفاصيل تحويل بنك الراجحي الداخلي:</strong><br>
               رقم الحساب: <code>523000010006086103150</code><br>
               الآيبان: <code>SA2180000523608016103150</code><br>
-              <span style="color: #C53030; font-weight: 700;">* يضاف 47 ريال رسوم تحصيل داخلية للمبلغ الإجمالي.</span>
+              <span style="color: #C53030; font-weight: 700;">* يضاف 47 ريال سعودي رسوم تحصيل وتوصيل داخلية للمبلغ الإجمالي.</span>
             </div>
 
-            <div class="total-price-banner" id="bookPriceDisplay">المبلغ الإجمالي المطلـوب: $40</div>
-            <button type="submit" class="btn-gold" id="bookSubmitBtn">تأكيد طلب الكتاب/الكتب بالنسخة الورقية المطبوعة والتواصل عبر الواتساب</button>
-
-            <button type="button" class="btn-gold" id="readBookDirectBtn" style="display:none; margin-top: 12px; background-color: var(--navy-dark); color: var(--gold-18k); border: 2px solid var(--gold-18k);" onclick="openProtectedReader()">📖 اقرأ الكتاب الآن</button>
+            <div class="total-price-banner" id="bookPriceDisplaySa">المبلغ الإجمالي المطلـوب: 197 ريال سعودي</div>
+            <button type="submit" class="btn-gold" id="bookSubmitBtnSa">تأكيد طلب الكتاب والتواصل المباشر مع الوكيل عبر الواتساب ➔</button>
           </form>
         </div>
       </div>
@@ -1060,7 +1159,139 @@
     function renderCounters() {
       document.getElementById('printedCountDisplay').textContent = printedBuyers;
       document.getElementById('digitalCountDisplay').textContent = digitalBuyers;
+      if (document.getElementById('printedCountDisplaySa')) {
+        document.getElementById('printedCountDisplaySa').textContent = printedBuyers;
+        document.getElementById('digitalCountDisplaySa').textContent = digitalBuyers;
+      }
     }
+
+    function switchPage(pageId, btnElement) {
+      document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active-page'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active-page');
+      if (btnElement && btnElement.classList) btnElement.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openBookPurchasePage(pageId) { switchPage(pageId, document.getElementById('btn-books')); }
+    function switchToSaudiBookPage() { switchPage('book-1-sa-page', document.getElementById('btn-books')); }
+
+    function updateIntlBookCalculations() {
+      const type = document.getElementById('b_type_intl').value;
+      const qty = parseInt(document.getElementById('b_qty_intl').value) || 1;
+      const qtyGroup = document.getElementById('qtyGroupIntl');
+      const addressGroup = document.getElementById('addressGroupIntl');
+      const submitBtn = document.getElementById('bookSubmitBtnIntl');
+      const readDirectBtn = document.getElementById('readBookDirectBtn');
+
+      let price = 0;
+      if (type === 'printed') {
+        qtyGroup.style.display = 'block';
+        if (addressGroup) addressGroup.style.display = 'block';
+        price = qty * 40;
+        submitBtn.textContent = "تأكيد طلب شراء النسخة الورقية المطبوعة والتواصل عبر الواتساب";
+        readDirectBtn.style.display = "none";
+      } else {
+        qtyGroup.style.display = 'none';
+        if (addressGroup) addressGroup.style.display = 'none';
+        price = 20;
+        submitBtn.textContent = "تأكيد طلب شراء النسخة الرقمية للكتاب";
+        readDirectBtn.style.display = "none";
+      }
+      document.getElementById('bookPriceDisplayIntl').textContent = `المبلغ الإجمالي المطلـوب: $${price}`;
+    }
+
+    function updateSaudiBookCalculations() {
+      const type = document.getElementById('b_type_sa').value;
+      const qty = parseInt(document.getElementById('b_qty_sa').value) || 1;
+      const qtyGroup = document.getElementById('qtyGroupSa');
+      const addressGroup = document.getElementById('addressGroupSa');
+      const submitBtn = document.getElementById('bookSubmitBtnSa');
+
+      let priceSAR = 0;
+      if (type === 'printed') {
+        qtyGroup.style.display = 'block';
+        if (addressGroup) addressGroup.style.display = 'block';
+        priceSAR = (qty * 150) + 47;
+        submitBtn.textContent = "تأكيد طلب الكتاب والتواصل المباشر مع الوكيل عبر الواتساب ➔";
+        document.getElementById('bookPriceDisplaySa').textContent = `المبلغ الإجمالي المطلـوب: ${priceSAR} ريال سعودي (شاملاً الشحن المباشر)`;
+      } else {
+        qtyGroup.style.display = 'none';
+        if (addressGroup) addressGroup.style.display = 'none';
+        priceSAR = 75;
+        submitBtn.textContent = "تأكيد طلب الشراء الرقمي وتفعيل القارئ فوراً ➔";
+        document.getElementById('bookPriceDisplaySa').textContent = `المبلغ الإجمالي المطلـوب: ${priceSAR} ريال سعودي`;
+      }
+    }
+
+    document.getElementById('bookOrderFormIntl').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const isPrinted = document.getElementById('b_type_intl').value === 'printed';
+      const name = document.getElementById('b_name_intl').value;
+      const phone = document.getElementById('b_phone_intl').value;
+      const country = document.getElementById('b_country_intl').value;
+      const city = document.getElementById('b_city_intl').value;
+      const qty = parseInt(document.getElementById('b_qty_intl').value) || 1;
+
+      if (isPrinted) {
+        printedBuyers += qty;
+        localStorage.setItem('mkn_printed_buyers', printedBuyers);
+        renderCounters();
+
+        const memberID = generateMemberID("MKN");
+        let msg = `السلام عليكم ورحمة الله، طلب شراء كتاب (إحياء العقل السليم) - الدفع الدولي:\n`;
+        msg += `• رقم العضوية المولد للطالبة: ${memberID}\n`;
+        msg += `• النوع: نسخة مطبوعة ورقية (${qty} نسخة)\n• الاسم: ${name}\n• الهاتف: ${phone}\n• العنوان: ${country} - ${city}\n• ${document.getElementById('bookPriceDisplayIntl').textContent}`;
+        
+        window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+      } else {
+        digitalBuyers += 1;
+        localStorage.setItem('mkn_digital_buyers', digitalBuyers);
+        renderCounters();
+
+        alert('✔ تم تأكيد عملية الدفع ($20) بنجاح عبر البوابة الدولية.\nأهلاً بكِ! تم إتاحة القارئ المشفر لكِ الآن.');
+        document.getElementById('readBookDirectBtn').style.display = 'block';
+      }
+    });
+
+    document.getElementById('bookOrderFormSa').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const isPrinted = document.getElementById('b_type_sa').value === 'printed';
+      const name = document.getElementById('b_name_sa').value;
+      const phone = document.getElementById('b_phone_sa').value;
+      const city = document.getElementById('b_city_sa').value;
+      const address = document.getElementById('b_address_sa').value;
+      const qty = parseInt(document.getElementById('b_qty_sa').value) || 1;
+
+      if (isPrinted) {
+        printedBuyers += qty;
+        localStorage.setItem('mkn_printed_buyers', printedBuyers);
+        renderCounters();
+
+        const memberID = generateMemberID("SA");
+        let msg = `السلام عليكم ورحمة الله، طلب شراء كتاب (إحياء العقل السليم) - الخدمة المعتمدة بالمملكة 🇸🇦:\n`;
+        msg += `------------------------------------\n`;
+        msg += `• رقم العضوية المولد: ${memberID}\n`;
+        msg += `• عدد النسخ الورقية: ${qty}\n`;
+        msg += `• الاسم بالكامل: ${name}\n`;
+        msg += `• جوال التواصل السعودي: ${phone}\n`;
+        msg += `• المدينة: ${city}\n`;
+        msg += `• عنوان الشحن: ${address}\n`;
+        msg += `• طريقة الدفع: تحويل بنكي (بنك الراجحي)\n`;
+        msg += `• ${document.getElementById('bookPriceDisplaySa').textContent}\n`;
+        msg += `------------------------------------\n`;
+        msg += `يرجى إرسال إيصال التحويل لتأكيد الشحن المباشر.`;
+
+        window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+      } else {
+        digitalBuyers += 1;
+        localStorage.setItem('mkn_digital_buyers', digitalBuyers);
+        renderCounters();
+
+        alert('✔ تم تأكيد عملية الدفع وتفعيل النسخة الرقمية بنجاح عبر البنك الداخلي بالسعودية.');
+        openProtectedReader();
+      }
+    });
 
     function switchProgramTab(type) {
       document.getElementById('tabAdultsBtn').classList.remove('active');
@@ -1077,18 +1308,9 @@
       }
     }
 
-    function openSupportNoticeModal() {
-      document.getElementById('supportNoticeModal').style.display = 'flex';
-    }
-
-    function closeSupportNoticeModal() {
-      document.getElementById('supportNoticeModal').style.display = 'none';
-    }
-
-    function proceedToSupportPrograms() {
-      closeSupportNoticeModal();
-      switchPage('services-page', document.getElementById('btn-services'));
-    }
+    function openSupportNoticeModal() { document.getElementById('supportNoticeModal').style.display = 'flex'; }
+    function closeSupportNoticeModal() { document.getElementById('supportNoticeModal').style.display = 'none'; }
+    function proceedToSupportPrograms() { closeSupportNoticeModal(); switchPage('services-page', document.getElementById('btn-services')); }
 
     function toggleSponsorFormFields() {
       const isSponsor = document.getElementById('isSponsorshipSelect').value === 'sponsor';
@@ -1241,15 +1463,6 @@
       `;
     });
 
-    function switchPage(pageId, btnElement) {
-      document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active-page'));
-      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(pageId).classList.add('active-page');
-      if (btnElement && btnElement.classList) btnElement.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function openBookPurchasePage(pageId) { switchPage(pageId, document.getElementById('btn-books')); }
     function zoomBookImage(src) { document.getElementById('zoomedImg').src = src; document.getElementById('imageZoomModal').style.display = 'flex'; }
     function closeImageZoom() { document.getElementById('imageZoomModal').style.display = 'none'; }
     function openCompanyModal() { document.getElementById('companyModal').style.display = 'flex'; }
@@ -1341,41 +1554,6 @@
 
     function closeProtectedReader() {
       document.getElementById('protectedReaderModal').style.display = 'none';
-    }
-
-    function updateBookPriceCalculations() {
-      const type = document.getElementById('bookTypeSelect').value;
-      const qty = parseInt(document.getElementById('bookQty').value) || 1;
-      const payment = document.getElementById('bookPaymentMethod').value;
-      const rajhiBox = document.getElementById('rajhiBookDetails');
-      const qtyGroup = document.getElementById('qtyGroup');
-      const addressGroup = document.getElementById('addressGroup');
-      const submitBtn = document.getElementById('bookSubmitBtn');
-      const readDirectBtn = document.getElementById('readBookDirectBtn');
-
-      let price = 0;
-      if (type === 'printed') {
-        qtyGroup.style.display = 'block';
-        if (addressGroup) addressGroup.style.display = 'block';
-        price = qty * 40;
-        submitBtn.textContent = "تأكيد طلب الكتاب/الكتب بالنسخة الورقية المطبوعة والتواصل عبر الواتساب";
-        readDirectBtn.style.display = "none";
-      } else {
-        qtyGroup.style.display = 'none';
-        if (addressGroup) addressGroup.style.display = 'none';
-        price = 20;
-        submitBtn.textContent = "تأكيد طلب شراء النسخة الرقمية للكتاب";
-        readDirectBtn.style.display = "none";
-      }
-
-      if (payment === 'rajhi') {
-        rajhiBox.style.display = 'block';
-        const sarPrice = (price * 3.75) + 47;
-        document.getElementById('bookPriceDisplay').textContent = `المبلغ المطلـوب: $${price} (${sarPrice.toFixed(0)} ريال سعودي مع التحصيل)`;
-      } else {
-        rajhiBox.style.display = 'none';
-        document.getElementById('bookPriceDisplay').textContent = `المبلغ المطلـوب: $${price}`;
-      }
     }
 
     let selectedProgramBasePriceSAR = 0;
@@ -1516,37 +1694,6 @@
       return prefix + "-" + Math.floor(1000 + Math.random() * 9000);
     }
 
-    document.getElementById('bookOrderForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const isPrinted = document.getElementById('bookTypeSelect').value === 'printed';
-      const name = document.getElementById('b_name').value;
-      const phone = document.getElementById('b_phone').value;
-      const country = document.getElementById('b_country').value;
-      const city = document.getElementById('b_city').value;
-      const payment = document.getElementById('bookPaymentMethod').value === 'rajhi' ? 'بنك الراجحي' : 'بايونير / CIB';
-      const qty = parseInt(document.getElementById('bookQty').value) || 1;
-
-      if (isPrinted) {
-        printedBuyers += qty;
-        localStorage.setItem('mkn_printed_buyers', printedBuyers);
-        renderCounters();
-
-        const memberID = generateMemberID("MKN");
-        let msg = `السلام عليكم ورحمة الله، طلب شراء كتاب (إحياء العقل السليم):\n`;
-        msg += `• رقم العضوية المولد للطالبة: ${memberID}\n`;
-        msg += `• النوع: نسخة مطبوعة ورقية (${qty} نسخة)\n• الاسم: ${name}\n• الهاتف: ${phone}\n• العنوان: ${country} - ${city}\n• الدفع: ${payment}\n• ${document.getElementById('bookPriceDisplay').textContent}`;
-        
-        window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
-      } else {
-        digitalBuyers += 1;
-        localStorage.setItem('mkn_digital_buyers', digitalBuyers);
-        renderCounters();
-
-        alert('✔ تم تأكيد عملية الدفع ($20) بنجاح عبر البوابة الآمنة.\nأهلاً بكِ! تم إتاحة القارئ المشفر لكِ الآن.');
-        document.getElementById('readBookDirectBtn').style.display = 'block';
-      }
-    });
-
     document.getElementById('programBookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const isSponsor = document.getElementById('isSponsorshipSelect').value === 'sponsor';
@@ -1636,6 +1783,8 @@
 
     renderCounters();
     renderQuranReads();
+    updateIntlBookCalculations();
+    updateSaudiBookCalculations();
   </script>
 </body>
 </html>
