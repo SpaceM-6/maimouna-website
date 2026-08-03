@@ -37,20 +37,20 @@
       min-height: 100vh;
     }
 
+    /* الشريط العلوي بالسمك الأصلي الناعم ودون أسماء باليمين */
     header {
       background-color: var(--navy-dark);
       border-bottom: 3px solid var(--gold-18k);
-      padding: 12px 4%;
+      padding: 8px 4%;
       position: sticky;
       top: 0;
       z-index: 1000;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end; /* تقديم القائمة لليسار والتناسق الأملس */
       align-items: center;
-      flex-wrap: wrap;
+      min-height: 52px;
     }
 
-    .logo { color: var(--gold-18k); font-size: 18px; font-weight: 800; cursor: pointer; }
     nav { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 
     .nav-btn {
@@ -103,8 +103,7 @@
     }
 
     @media (max-width: 768px) { 
-      header { flex-direction: column; gap: 10px; padding: 10px 2%; } 
-      .logo { font-size: 17px; text-align: center; }
+      header { justify-content: center; padding: 8px 2%; } 
       nav { width: 100%; justify-content: center; } 
       .nav-btn { font-size: 12px; padding: 5px 8px; }
       .floating-support-btn { bottom: 15px; right: 15px; font-size: 12.5px; padding: 10px 16px; }
@@ -114,17 +113,60 @@
     .page-section.active-page { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* الهيدر الرئيسي مع خلفية ضوء الماء الشفاف والأزرق البحري */
+    /* الهيدر الرئيسي */
     .hero-section {
       background: linear-gradient(135deg, rgba(10, 25, 47, 0.78) 0%, rgba(14, 116, 144, 0.58) 50%, rgba(10, 25, 47, 0.82) 100%),
                   url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
-      color: var(--white); padding: 55px 5% 45px; text-align: center; border-bottom: 2px solid var(--gold-18k);
+      color: var(--white); padding: 50px 5% 40px; text-align: center; border-bottom: 2px solid var(--gold-18k);
     }
     
+    /* شارة اسم شركة مكين المضيئة بالتوهج الذهبي التفاعلي */
     .company-badge {
-      display: inline-block; background-color: rgba(10, 25, 47, 0.5); border: 1px solid var(--gold-18k); color: var(--gold-18k); padding: 8px 22px; border-radius: 20px; font-size: 14px; font-weight: 700; margin-bottom: 20px; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(4px);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: rgba(10, 25, 47, 0.75);
+      border: 1.5px solid var(--gold-18k);
+      color: var(--gold-18k);
+      padding: 7px 24px;
+      border-radius: 30px;
+      font-size: 14.5px;
+      font-weight: 800;
+      margin-bottom: 22px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      
+      /* تأثير التوهج الذهبي المضيء */
+      animation: goldGlow 2.2s infinite alternate ease-in-out;
     }
-    .company-badge:hover { background-color: var(--gold-18k); color: var(--navy-dark); transform: scale(1.03); }
+
+    @keyframes goldGlow {
+      0% {
+        box-shadow: 0 0 5px rgba(243, 211, 122, 0.4), 0 0 10px rgba(243, 211, 122, 0.2);
+        border-color: rgba(243, 211, 122, 0.6);
+      }
+      100% {
+        box-shadow: 0 0 18px rgba(243, 211, 122, 0.85), 0 0 30px rgba(243, 211, 122, 0.5);
+        border-color: #FFFFFF;
+      }
+    }
+
+    .company-badge:hover {
+      background-color: var(--gold-18k);
+      color: var(--navy-dark);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(243, 211, 122, 0.9);
+    }
+
+    .badge-company-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: contain;
+      border: 1px solid var(--gold-18k);
+      background-color: var(--navy-dark);
+    }
 
     .hero-section h1 { 
       font-family: 'Cairo', sans-serif;
@@ -138,6 +180,7 @@
 
     @media (max-width: 768px) {
       .hero-section h1 { font-size: 24px; }
+      .company-badge { font-size: 13px; padding: 6px 18px; }
     }
 
     .hero-section h2 { font-size: 16px; color: #F8FAFC; font-weight: 700; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
@@ -320,9 +363,8 @@
     <span>🤝</span> ادعم طالب/ة علم
   </button>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation Bar بالشكل الأصلي النظيف وبدون الأسماء باليمين -->
   <header>
-    <div class="logo" onclick="switchPage('bio-page', this)">الشيخة د. ميمونة ندا</div>
     <nav>
       <button class="nav-btn active" id="btn-bio" onclick="switchPage('bio-page', this)">السيرة الذاتية</button>
       <button class="nav-btn" id="btn-books" onclick="switchPage('books-page', this)">كتب ومؤلفات</button>
@@ -337,7 +379,11 @@
   <!-- PAGE 1: BIO -->
   <div id="bio-page" class="page-section active-page">
     <section class="hero-section">
-      <div class="company-badge" onclick="openCompanyModal()">شركة مكين للاستشارات والتدريب والتعليم</div>
+      <!-- شارة اسم الشركة المضيئة بالتوهج الذهبي التفاعلي دون عبارة انقر هنا ومع اللوجو المصغر -->
+      <div class="company-badge" onclick="window.location.href='makeen-home.html'">
+        <img src="makeen-logo.jpeg" alt="لوجو شركة مكين" class="badge-company-logo">
+        <span>شركة مكين للاستشارات والتدريب والتعليم</span>
+      </div>
       <h1>الشيخة المُقرئة المُجيزة / ميمونة عبدالعزيز ندا</h1>
       <h2>باحثة في الشريعة الإسلامية ومُدرّبة القرآن الكريم والقراءات العشر</h2>
       <p class="hero-summary">
@@ -782,7 +828,7 @@
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
           <h4 style="color: var(--navy-dark);">الطالبة: مشيرة اليزيدي (السعودية) - دقة الترقيق والتفخيم والوقف</h4>
-          <p style="font-size: 13.5px; color: var(--text-dark); margin-top: 8px;">"بدأت مع الأستاذة من الجزء التاسع ومن أول الأيام استفدت استفادة قيّمة تبارك الرحمن، وتنبيهاتها دقيقة وفي الترقيق والتفخيم وهذا أكثر شيء عجبني، وأيضًا المعلمة كانت تفيدنا بمعلومات عامة عن الترتيل وطرق الابتداء والوقف وعن اللغة العربية.. تعاملها لطيف وترحيبها بنا يكون مفعم بالنشاط والحماس وتصبر علينا في تحسين الخطأ وتوضحه لنا بطريقة مبسطة، الله يجزيها عنَّا خير الجزاء."</p>
+          <p style="font-size: 13.5px; color: var(--text-dark); margin-top: 8px;">"بدأت مع الأستاذة من الجزء التاسع ومن أول الأيام استفدت استفادة قيّمة تبارك الرحمن، وتنبيهاتها دقيقة وفي الترقيق والتفخيم وهذا أكثر شيء عجبني، وأيضًا المعلمة كانت تفيدنا بمعلومات عامة عن الترتيل وطرق الابتداء والوقف وعن اللغة العربية.. تعاملها لطيف وترحيبها بنا يكون مفعم بالنشاط والحماس وتصبر علينا في تحسين الخطأ وتوضحه لنا بطريقة مبسطة، الله يجزيها عنَّا خير الجزاء."</p>
         </div>
 
         <div class="review-card">
@@ -1076,7 +1122,6 @@
 
     function openBookPurchasePage(pageId) { switchPage(pageId, document.getElementById('btn-books')); }
 
-    // التحويل المباشر لصفحة السعودية المستقلة saudi-book.html
     function switchToSaudiBookPage() { 
       window.location.href = "saudi-book.html"; 
     }
@@ -1103,7 +1148,6 @@
       document.getElementById('bookPriceDisplayIntl').textContent = `المبلغ الإجمالي المطلـوب: $${price}`;
     }
 
-    // 1. معالجة نموذج الدفع الدولي
     document.getElementById('bookOrderFormIntl').addEventListener('submit', function(e) {
       e.preventDefault();
       const isPrinted = document.getElementById('b_type_intl').value === 'printed';
@@ -1126,7 +1170,6 @@
         
         window.open(`https://wa.me/${TARGET_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
       } else {
-        // للنسخة الرقمية الدولية: توجيه لبوابة الدفع المباشر ولا يفتح القارئ إلا بعد التأكيد المالي
         alert("جاري تحويلكِ الآن إلى بوابة الدفع الآمنة بالبطاقة لخصم ($20)...\n\nملاحظة: سيتم فتح وتفعيل الكتاب الرقمي المشفر فور استلام تأكيد الخصم المصرفي الناجح.");
       }
     });
